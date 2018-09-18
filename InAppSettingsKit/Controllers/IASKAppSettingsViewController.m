@@ -683,6 +683,11 @@ CGRect IASKCGRectSwap(CGRect rect);
 	cell.detailTextLabel.textAlignment = specifier.textAlignment;
 	cell.textLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
 	cell.detailTextLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
+
+    if ([self.delegate respondsToSelector:@selector(configureCell:specifier:)]) {
+        [self.delegate configureCell:cell specifier:specifier];
+    }
+
     return cell;
 }
 
